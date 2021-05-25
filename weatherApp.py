@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-import datetime
+# import datetime   # no longer required
 import requests
 import json
 
@@ -14,7 +14,7 @@ def airiesInlet():
     try:
         url = "http://" + host + "/fwo/IDV60801/IDV60801.94846.json"
         r = requests.get(url, headers=headers) # added header
-        print(r.text)
+        # print(r.text) # for testing
         json_data = r.json()
         windDirection = str(json_data["observations"]["data"][0]["wind_dir"])   # most recent measurement [0]
         windSpeed = float(json_data["observations"]["data"][0]["wind_spd_kt"])
