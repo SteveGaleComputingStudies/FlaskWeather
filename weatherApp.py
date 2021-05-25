@@ -13,7 +13,7 @@ def airiesInlet():
     }                                   # pretend not to be a bot
     try:
         url = "http://" + host + "/fwo/IDV60801/IDV60801.94846.json"
-        r = requests.get(url, headers=headers) # added header
+        r = requests.get(url, headers=headers) # added header to pretend not to be a bot
         # print(r.text) # for testing
         json_data = r.json()
         windDirection = str(json_data["observations"]["data"][0]["wind_dir"])   # most recent measurement [0]
@@ -35,7 +35,7 @@ def airiesInlet():
         'windDirection' : windDirection,
         'windGusts' : windGusts
         }
-    return render_template('main.html', **templateData)
+    return render_template('main.html', **templateData)     # view
 
 if __name__ == "__main__":
    app.run(host='0.0.0.0', port=8080, debug=True)   # port 80 used already
