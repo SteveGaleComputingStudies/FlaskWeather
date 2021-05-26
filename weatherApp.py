@@ -1,11 +1,11 @@
 from flask import Flask, render_template
-# import datetime   # no longer required
+
 import requests
 import json
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/")                         # controller routing
 def airiesInlet():
     host = "www.bom.gov.au"
     headers = {
@@ -25,9 +25,8 @@ def airiesInlet():
         windDirection = "NA"
         windSpeed = -1
         windGusts = -1
-    
-    #now = datetime.datetime.now()
-    #timeString = now.strftime("%Y-%m-%d %H:%M")
+# model (data format)
+
     templateData = {
         'title' : title,
         'time': localDateTime,
