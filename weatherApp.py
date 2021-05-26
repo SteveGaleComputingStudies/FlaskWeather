@@ -3,9 +3,9 @@ from flask import Flask, render_template
 import requests
 import json
 
-app = Flask(__name__)
+app = Flask(__name__)                   # flask application server
 
-@app.route("/")                         # controller routing
+@app.route("/")                         # controller routing to method handler
 def airiesInlet():
     host = "www.bom.gov.au"
     headers = {
@@ -25,6 +25,7 @@ def airiesInlet():
         windDirection = "NA"
         windSpeed = -1
         windGusts = -1
+        # add lkalTime, title
 # model (data format)
 
     templateData = {
@@ -34,7 +35,7 @@ def airiesInlet():
         'windDirection' : windDirection,
         'windGusts' : windGusts
         }
-    return render_template('main.html', **templateData)     # view
+    return render_template('main.html', **templateData)     # view - (data display template)
 
 if __name__ == "__main__":
    app.run(host='0.0.0.0', port=8080, debug=True)   # port 80 used already
